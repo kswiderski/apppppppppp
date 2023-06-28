@@ -1,0 +1,17 @@
+@model Customer
+
+@{
+    ViewData["Title"] = "Create Item";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@using (Html.BeginForm("Create", "Customer", FormMethod.Post))
+{
+    <div>
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" name="Name" required />
+    </div>
+
+    <input type="submit" value="Create" />
+}

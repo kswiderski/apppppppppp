@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Customers";
+    var customers = ViewData["Customers"] as List<Customer>;
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    th {
+        background-color: lightgray;
+    }
+    
+    .action-button:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<h2>@ViewData["Title"]</h2>
+
+<a asp-area="" asp-controller="Customer" asp-action="CreateCustomer" class="btn btn-secondary">Dodaj nowego</a>
+<br/><br/>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nazwa użytkownika</th>
+        <th colspan="2">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var customer in customers)
+    {
+        <tr>
+            <td>@customer.Name</td>
+            <td class="action-button">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Customers">Edytuj</a>
+            </td>
+            <td class="action-button">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.Id">Usuń</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
